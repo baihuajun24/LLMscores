@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="llmscores">LLMscores</h1>
+<p>国内外大语言模型基础能力综述</p>
+<h1 id="%E5%A4%AA%E9%95%BF%E4%B8%8D%E7%9C%8B-%E7%BB%93%E8%AE%BA">太长不看-结论</h1>
+<p>GPT4一骑绝尘，表现明显超出其他国内外语言模型</p>
+ <!-- 甚至在某些评测任务中作为裁判出现，给其他模型打分（待增加引用）-->
+<h2 id="lmsys-elo-score">lmsys elo score</h2>
+<blockquote>
+<p>开发团队 UC Berkeley, UCSD, CMU</p>
+</blockquote>
+<blockquote>
+<p>https://chat.lmsys.org/</p>
+</blockquote>
+<blockquote>
+<p>数据上次更新2023-05-08</p>
+</blockquote>
+<h3 id="%E5%BE%97%E5%88%86%E8%A1%A8%E6%A0%BC">得分表格</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Model</th>
+<th>Elo Rating</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 🥇</td>
+<td>gpt-4</td>
+<td>1274</td>
+<td>ChatGPT-4 by OpenAI</td>
+</tr>
+<tr>
+<td>2 🥈</td>
+<td>claude-v1</td>
+<td>1224</td>
+<td>Claude by Anthropic</td>
+</tr>
+<tr>
+<td>3 🥉</td>
+<td>gpt-3.5-turbo</td>
+<td>1155</td>
+<td>ChatGPT-3.5 by OpenAI</td>
+</tr>
+<tr>
+<td>4</td>
+<td>vicuna-13b</td>
+<td>1083</td>
+<td>a chat assistant fine-tuned from LLaMA on user-shared conversations by LMSYS</td>
+</tr>
+<tr>
+<td>5</td>
+<td>koala-13b</td>
+<td>1022</td>
+<td>a dialogue model for academic research by BAIR</td>
+</tr>
+<tr>
+<td>6</td>
+<td>RWKV-4-Raven-14B</td>
+<td>989</td>
+<td>an RNN with transformer-level LLM performance</td>
+</tr>
+<tr>
+<td>7</td>
+<td>oasst-pythia-12b</td>
+<td>928</td>
+<td>an Open Assistant for everyone by LAION</td>
+</tr>
+<tr>
+<td>8</td>
+<td>chatglm-6b</td>
+<td>918</td>
+<td>an open bilingual dialogue language model by Tsinghua University</td>
+</tr>
+<tr>
+<td>9</td>
+<td>stablelm-tuned-alpha-7b</td>
+<td>906</td>
+<td>Stability AI language models</td>
+</tr>
+<tr>
+<td>10</td>
+<td>alpaca-13b</td>
+<td>904</td>
+<td>a model fine-tuned from LLaMA on instruction-following demonstrations by Stanford</td>
+</tr>
+<tr>
+<td>11</td>
+<td>fastchat-t5-3b</td>
+<td>902</td>
+<td>a chat assistant fine-tuned from FLAN-T5 by LMSYS</td>
+</tr>
+<tr>
+<td>12</td>
+<td>dolly-v2-12b</td>
+<td>863</td>
+<td>an instruction-tuned open large language model by Databricks</td>
+</tr>
+<tr>
+<td>13</td>
+<td>llama-13b</td>
+<td>826</td>
+<td>open and efficient foundation language models by Meta</td>
+</tr>
+</tbody>
+</table>
+<h3 id="elo-rating-%E6%98%AF%E4%BB%80%E4%B9%88%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E7%9A%84">Elo Rating 是什么，如何计算的？</h3>
+<p>Elo Rating是一种评估玩家（或者其他竞技体系中的参与者）相对实力的方法，最初由Arpad Elo在20世纪60年代为国际象棋联盟开发，但现在也被广泛用于其他体育和电子游戏中。</p>
+<p>Elo系统的基本原理是：如果一个玩家赢得比预期更多的比赛（也就是打败了比他/她评级更高的玩家），那么他/她的评级会上升。相反，如果他们输掉了比预期更多的比赛（也就是被比他们评级更低的玩家击败），那么他们的评级会下降。</p>
+<p>在语言模型评估中，评估员会同时对两个模型A和B提交同样的提示词，根据他们返回的结果，判断A更好，B更好，一样好，或者一样坏，以次完成一次对战。Elo得分通过多次对战，计算出模型的相对实力。
+如下图所示
+<img src="imgs/elo_demopng.png" alt="elo_demo"></p>
+<h2 id="c-eval">C-Eval</h2>
+<blockquote>
+<p>开发团队：清华大学、上海交大</p>
+</blockquote>
+<blockquote>
+<p>https://cevalbenchmark.com/</p>
+</blockquote>
+<h3 id="%E5%BE%97%E5%88%86%E8%A1%A8%E6%A0%BC">得分表格</h3>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型名</th>
+<th>机构名</th>
+<th>测试时间</th>
+<th>平均分</th>
+<th>难题平均分</th>
+<th>理工</th>
+<th>社会科学</th>
+<th>人文科学</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>GPT-4</td>
+<td>OpenAI</td>
+<td>2023/5/15</td>
+<td>68.7</td>
+<td>54.9</td>
+<td>67.1</td>
+<td>77.6</td>
+<td>64.5</td>
+<td>67.8</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ChatGPT</td>
+<td>OpenAI</td>
+<td>2023/5/15</td>
+<td>54.4</td>
+<td>41.4</td>
+<td>52.9</td>
+<td>61.8</td>
+<td>50.9</td>
+<td>53.6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Claude-v1.3</td>
+<td>Anthropic</td>
+<td>2023/5/15</td>
+<td>54.2</td>
+<td>39</td>
+<td>51.9</td>
+<td>61.7</td>
+<td>52.1</td>
+<td>53.7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude-instant-v1.0</td>
+<td>Anthropic</td>
+<td>2023/5/15</td>
+<td>45.9</td>
+<td>35.5</td>
+<td>43.1</td>
+<td>53.8</td>
+<td>44.2</td>
+<td>45.4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GLM-130B</td>
+<td>Tsinghua</td>
+<td>2023/5/15</td>
+<td>40.3</td>
+<td>30.3</td>
+<td>34.8</td>
+<td>48.7</td>
+<td>43.3</td>
+<td>39.8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bloomz-mt</td>
+<td>BigScience</td>
+<td>2023/5/15</td>
+<td>39</td>
+<td>30.4</td>
+<td>35.3</td>
+<td>45.1</td>
+<td>40.5</td>
+<td>38.5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>LLaMA-65B</td>
+<td>Meta</td>
+<td>2023/5/15</td>
+<td>38.8</td>
+<td>31.7</td>
+<td>37.8</td>
+<td>45.6</td>
+<td>36.1</td>
+<td>37.1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ChatGLM-6B</td>
+<td>Tsinghua</td>
+<td>2023/5/15</td>
+<td>34.5</td>
+<td>23.1</td>
+<td>30.4</td>
+<td>39.6</td>
+<td>37.4</td>
+<td>34.5</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Chinese LLaMA-13B</td>
+<td>Cui et al.</td>
+<td>2023/5/15</td>
+<td>33.3</td>
+<td>27.3</td>
+<td>31.6</td>
+<td>37.2</td>
+<td>33.6</td>
+<td>32.8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>MOSS</td>
+<td>Fudan</td>
+<td>2023/5/15</td>
+<td>31.1</td>
+<td>24</td>
+<td>28.6</td>
+<td>36.8</td>
+<td>31</td>
+<td>30.3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Chinese Alpaca-13B</td>
+<td>Cui et al.</td>
+<td>2023/5/15</td>
+<td>26.7</td>
+<td>27.1</td>
+<td>26</td>
+<td>27.2</td>
+<td>27.8</td>
+<td>26.4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E9%A2%98%E7%9B%AE%E6%9D%A5%E6%BA%90">题目来源</h3>
+<p>C-Eval 是一个全面的中文基础模型评估套件。它包含了13948个多项选择题，涵盖了52个不同的学科和四个难度级别，如下所示
+<img src="imgs/ceval.png" alt="ceval"></p>
+<ul>
+<li>
+<p>主题选择：C-EVAL涵盖了四个难度级别：初中，高中，大学和专业。我们包括了除了英语学科以外的中国初中和高中级别的标准科目。对于大学级别，我们从中国教育部列出的所有13个官方本科专业类别中选择了25个代表性科目，每个类别至少包含一个科目被纳入C-EVAL，以确保全面性。对于专业级别，我们参考了中国官方的国家职业资格目录，并选择了12个代表性的资格考试，如医生，法律专业人员和公务员资格考试。我们还将这些科目根据其主题聚类为四个类别：STEM（科学，技术，工程和数学），社会科学，人文科学和其他领域。</p>
+</li>
+<li>
+<p>数据来源：我们的数据主要来源是互联网上免费提供的模拟考试。此外，一部分大学级别的问题是中国顶尖大学的历年考试题，由学生公开分享。一小部分大学问题是源自文库网站的全国研究生入学考试的模拟题
+<a href="https://kaoyan.cqvip.com/view/postgraduate/index.aspx">维库考研资源数据库</a>
+——这些问题不对公众免费开放，我们已经获得他们的授权，将大约2000个此类问题纳入C-EVAL。</p>
+</li>
+</ul>
+<h2 id="superclue">SuperCLUE</h2>
+<blockquote>
+<p>开发团队：CLUE team</p>
+</blockquote>
+<blockquote>
+<p>https://www.cluebenchmarks.com/superclue.html</p>
+</blockquote>
+<h3 id="%E5%BE%97%E5%88%86%E8%A1%A8%E6%A0%BC">得分表格</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>机构</th>
+<th>总分</th>
+<th>基础能力</th>
+<th>中文特性</th>
+<th>学术与专业能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人类</td>
+<td>CLUE</td>
+<td>96.50</td>
+<td>98.00</td>
+<td>95.00</td>
+<td>-</td>
+</tr>
+<tr>
+<td>GPT-4</td>
+<td>OpenAI</td>
+<td>76.67</td>
+<td>90.00</td>
+<td>68.00</td>
+<td>72.00</td>
+</tr>
+<tr>
+<td>GPT-3.5-turbo</td>
+<td>OpenAI</td>
+<td>66.18</td>
+<td>85.00</td>
+<td>59.00</td>
+<td>54.55</td>
+</tr>
+<tr>
+<td>Claude</td>
+<td>Anthropic</td>
+<td>65.13</td>
+<td>87.00</td>
+<td>55.00</td>
+<td>53.39</td>
+</tr>
+<tr>
+<td>360智脑</td>
+<td>360</td>
+<td>58.24</td>
+<td>80.00</td>
+<td>49.00</td>
+<td>45.71</td>
+</tr>
+<tr>
+<td>讯飞星火</td>
+<td>科大讯飞</td>
+<td>53.58</td>
+<td>74.00</td>
+<td>44.00</td>
+<td>42.73</td>
+</tr>
+<tr>
+<td>ChatGLM-130B</td>
+<td>清华&amp;智谱AI</td>
+<td>49.52</td>
+<td>73.00</td>
+<td>33.00</td>
+<td>42.55</td>
+</tr>
+<tr>
+<td>MiniMax</td>
+<td>MiniMax</td>
+<td>46.45</td>
+<td>72.00</td>
+<td>29.00</td>
+<td>38.36</td>
+</tr>
+<tr>
+<td>西湖大模型</td>
+<td>西湖心辰</td>
+<td>45.38</td>
+<td>70.00</td>
+<td>34.00</td>
+<td>32.14</td>
+</tr>
+<tr>
+<td>BELLE-13B</td>
+<td>链家</td>
+<td>43.70</td>
+<td>69.00</td>
+<td>23.00</td>
+<td>39.09</td>
+</tr>
+<tr>
+<td>ChatGLM-6B</td>
+<td>清华&amp;智谱AI</td>
+<td>42.15</td>
+<td>60.00</td>
+<td>33.00</td>
+<td>33.45</td>
+</tr>
+<tr>
+<td>MOSS-16B</td>
+<td>复旦</td>
+<td>36.52</td>
+<td>52.00</td>
+<td>27.00</td>
+<td>30.55</td>
+</tr>
+<tr>
+<td>Vicuna-13B</td>
+<td>UC伯克利</td>
+<td>34.33</td>
+<td>45.00</td>
+<td>30.00</td>
+<td>28.00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E9%A2%98%E7%9B%AE%E6%9D%A5%E6%BA%90">题目来源</h3>
+<p>暂未公开
+<a href="https://github.com/CLUEbenchmark/SuperCLUE#SuperCLUE%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86">官方数据集描述</a></p>
+<ol>
+<li>基础能力（10项能力）：语义理解、生成与创作、闲聊、对话、百科与知识、逻辑与推理、计算能力、代码、角色模拟、安全</li>
+<li>中文特性能力（10项能力）：成语、诗词、文学、字义理解、汉语句法分析、汉字字形和拼音理解、歇后语和谚语、对联、方言、古文</li>
+<li>专业能力（50+能力）：抽象代数、天文学、临床知识、大学生物学、大学计算机科学、大学数学、高中化学、高中物理、机器学习、营养、专业会计、职业心理学等</li>
+</ol>
+
+</body>
+</html>
